@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 144" role="img" aria-label="Símbolo Henter Digital Solutions">
+<defs><linearGradient id="blue" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#111b24"/><stop offset=".48" stop-color="#133454"/><stop offset="1" stop-color="#2d5bbb"/></linearGradient><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d2d7df" stop-opacity=".8"/><stop offset="1" stop-color="#d2d7df" stop-opacity=".06"/></linearGradient></defs>
+<g transform="translate(12 12)"><path d="M0 0 34 0 34 23 0 37Z" fill="#111b24"/>
+<path d="M0 45 34 31 34 41 0 55Z" fill="#111b24"/>
+<path d="M0 66 72 37 72 0 104 0 104 54 34 82 34 120 0 120Z" fill="url(#blue)"/>
+<path d="M72 75 104 62 104 77 72 90Z" fill="url(#fade)"/>
+<path d="M72 97 104 84 104 120 72 120Z" fill="url(#fade)"/></g></svg>

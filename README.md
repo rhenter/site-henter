@@ -59,9 +59,9 @@ As artes dos produtos são conceituais. Seus estágios atuais de desenvolvimento
 
 As fontes são servidas pelo próprio site. A licença da Manrope está em `public/assets/fonts/OFL-Manrope.txt`.
 
-## Deploy no Cloudflare Pages
+## Deploy no Netlify
 
-O caminho recomendado é conectar este repositório ao Cloudflare Pages. Depois da configuração inicial, novos commits enviados à branch de produção geram novas publicações.
+O site está publicado no Netlify em **https://site-henter.netlify.app/**. Depois da configuração inicial, novos commits enviados à branch de produção podem gerar novas publicações automaticamente.
 
 ### 1. Disponibilizar os arquivos no GitHub
 
@@ -78,48 +78,62 @@ O repositório remoto é **https://github.com/rhenter/site-henter**.
 
 ### 2. Conectar o repositório
 
-No painel da Cloudflare:
+No painel do Netlify:
 
-1. Acesse **Workers & Pages** e crie um projeto **Pages**.
-2. Escolha a integração com Git e conecte o GitHub.
-3. Selecione o repositório **rhenter/site-henter**.
-4. Configure os campos abaixo e inicie o deploy.
+1. Escolha **Add new project** e **Import an existing project**.
+2. Conecte o GitHub e selecione o repositório **rhenter/site-henter**.
+3. Configure os campos abaixo e inicie o deploy.
 
-| Configuração           | Valor                                    |
-| ---------------------- | ---------------------------------------- |
-| Branch de produção     | `main`                                   |
-| Framework preset       | `None`                                   |
-| Build command          | `exit 0`                                 |
-| Build output directory | `public`                                 |
-| Root directory         | Raiz do repositório; deixe o campo vazio |
-| Variáveis de ambiente  | Nenhuma                                  |
+| Configuração       | Valor                                    |
+| ------------------ | ---------------------------------------- |
+| Branch de produção | `main`                                   |
+| Build command      | Deixe vazio                              |
+| Publish directory  | `public`                                 |
+| Base directory     | Raiz do repositório; deixe o campo vazio |
+| Variáveis          | Nenhuma                                  |
 
-O comando `exit 0` apenas encerra a etapa de build com sucesso. A hospedagem publica diretamente o conteúdo de `public/`.
+Não há etapa de build. O Netlify publica diretamente o conteúdo de `public/`.
 
-Após o deploy, confira o endereço `*.pages.dev` informado pela Cloudflare.
+O endereço permanente do projeto é `https://site-henter.netlify.app/`. Endereços no formato `ID--site-henter.netlify.app` identificam uma publicação específica e não devem ser usados como destino do DNS.
 
-Referências: [publicação de HTML estático](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/) e [integração com Git](https://developers.cloudflare.com/pages/get-started/git-integration/).
+Referência: [deploy com repositório no Netlify](https://docs.netlify.com/welcome/add-new-site/).
 
 ### 3. Conectar henter.com.br
 
-1. Adicione `henter.com.br` à sua conta Cloudflare.
-2. Confira e preserve os registros DNS existentes, principalmente os registros de e-mail: MX, SPF, DKIM e DMARC.
-3. Para usar o domínio raiz no Pages, configure no registrador os servidores DNS informados pela Cloudflare. O domínio continua registrado no provedor atual.
-4. No projeto Pages, abra **Custom domains** e adicione `henter.com.br`.
-5. Adicione também `www.henter.com.br` caso queira atender esse endereço. Configure o redirecionamento de `www` para `henter.com.br`, que é o endereço principal definido nos metadados.
-6. Aguarde a ativação do domínio e do HTTPS e confira os dois endereços.
+O DNS é administrado diretamente pelo Registro.br. Não altere os servidores DNS nem remova os registros de e-mail existentes. Em especial, preserve os registros MX do Google Workspace, além de SPF, DKIM e DMARC.
 
-Referências: [domínios personalizados](https://developers.cloudflare.com/pages/configuration/custom-domains/) e [redirecionamento de www para o domínio raiz](https://developers.cloudflare.com/pages/how-to/www-redirect/).
+Primeiro, no projeto do Netlify:
+
+1. Abra **Domain management** e **Production domains**.
+2. Escolha **Add a domain** e adicione `henter.com.br`.
+3. Mantenha `henter.com.br` como domínio principal. O Netlify também adicionará `www.henter.com.br` e o redirecionará para o domínio principal.
+
+Depois, no painel do Registro.br:
+
+1. Abra o domínio `henter.com.br`.
+2. Na seção **DNS**, escolha **Configurar endereçamento** e entre no **Modo avançado**.
+3. Adicione somente os dois registros abaixo. No registro raiz, informe o próprio domínio, conforme exibido pelo painel.
+
+| Nome                | Tipo    | Destino                          |
+| ------------------- | ------- | -------------------------------- |
+| `henter.com.br`     | `CNAME` | `apex-loadbalancer.netlify.com.` |
+| `www.henter.com.br` | `CNAME` | `site-henter.netlify.app.`       |
+
+O ponto final no destino do `CNAME` indica um nome completo. Caso o painel o remova ao salvar, isso é normal.
+
+O Registro.br aplica CNAME flattening ao registro raiz e publica externamente o endereço `A 75.2.60.5`. Assim, os registros MX do Google Workspace permanecem válidos no mesmo domínio.
+
+Após salvar, aguarde a publicação do DNS e volte a **Domain management** no Netlify para acompanhar a validação e a emissão do certificado HTTPS. A propagação pode levar algumas horas e, em casos excepcionais, até 24 horas.
+
+Referências: [DNS externo no Netlify](https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/) e [administração de DNS no Registro.br](https://registro.br/ajuda/gerenciamento-de-conta/).
 
 Se o domínio principal mudar, atualize a URL canônica e `og:url` em `public/index.html`, a URL em `public/sitemap.xml` e a referência ao sitemap em `public/robots.txt`.
 
 ### Publicação manual
 
-Para publicar sem integração com Git, o Cloudflare Pages também permite **Direct Upload**. Envie a pasta `public/` ou um ZIP contendo seu conteúdo, com `index.html` na raiz do ZIP.
+Para publicar sem integração com Git, o Netlify também permite deploy manual. Envie a pasta `public/` ou um ZIP contendo seu conteúdo, com `index.html` na raiz do ZIP.
 
-Um projeto criado por Direct Upload não pode ser convertido posteriormente em um projeto com integração Git; é necessário criar outro projeto. Para este repositório, prefira a integração Git desde o início.
-
-Referência: [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/).
+Referência: [deploy manual no Netlify](https://docs.netlify.com/welcome/add-new-site/#deploy-without-continuous-deployment).
 
 ## Conferência antes de publicar
 
@@ -138,4 +152,4 @@ node --check public/script.js
 
 ## Estado da configuração
 
-Os arquivos estão preparados para publicação. A conexão com o Cloudflare Pages, a primeira publicação no GitHub e a configuração DNS do domínio são etapas externas descritas acima; não são realizadas pelo conteúdo deste repositório.
+Os arquivos estão publicados no Netlify e o DNS de `henter.com.br` e `www.henter.com.br` está configurado no Registro.br. Após uma alteração de DNS, a resolução e o certificado HTTPS podem levar algumas horas para se atualizar em todos os provedores.

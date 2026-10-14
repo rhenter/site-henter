@@ -31,7 +31,7 @@ const englishContent = [
   [".services-section .section-heading > p", "A perspective that connects business, software, and operations—building what is missing and improving what already exists."],
   [".software-card h3", "Software that grows<br />with your business."],
   [".software-card > p", "Custom applications, APIs, and integrations. From launching a new product to evolving the systems already running your operation."],
-  [".software-card .service-tags", "<li>Python & Django</li><li>APIs & integrations</li><li>Distributed systems</li>"],
+  [".software-card .service-tags", "<li>Python · Django · FastAPI</li><li>REST APIs & integrations</li><li>Microservices & distributed systems</li>"],
   [".software-card .card-link", `Build a solution ${ARROW_ICON}`],
   [".cloud-card h3", "More efficiency.<br />Less waste."],
   [".cloud-card > p", "Infrastructure, server tuning, and resource optimization. Find bottlenecks, adjust capacity, and improve performance and reliability."],
@@ -43,7 +43,7 @@ const englishContent = [
   [".architecture-card .card-link", `Plan the evolution ${ARROW_ICON}`],
   [".ai-card h3", "AI with one purpose:<br />to be useful."],
   [".ai-card > p", "Custom agents, intelligent search, and process automation. Connect company knowledge to solutions that support real work."],
-  [".ai-card .service-tags", "<li>Agents & automation</li><li>RAG & semantic search</li><li>Bedrock & LangChain</li>"],
+  [".ai-card .service-tags", "<li>Agentic AI & AI agents</li><li>Agno Agents & LangChain</li><li>RAG · Bedrock · semantic search</li>"],
   [".ai-card .card-link", `Explore the possibilities ${ARROW_ICON}`],
   [".services-note p", "A new project, a legacy system, or an environment that needs to evolve.<br /><strong>The starting point is understanding what your business needs.</strong>"],
   [".experience-section .section-heading .eyebrow", "02 / Experience behind the delivery"],
@@ -72,7 +72,7 @@ const englishContent = [
   ["#panel-infra .check-list", `<li>${CHECK_ICON}Linux, Windows Server, Solaris, and HP-UX environments.</li><li>${CHECK_ICON}PostgreSQL, MySQL, and SQL Server optimization.</li><li>${CHECK_ICON}Automation, monitoring, and production diagnostics.</li><li>${CHECK_ICON}Developed automation scripts and monitoring tools to streamline infrastructure operations and reduce manual effort.</li><li>${CHECK_ICON}Collaborated with development and operations teams to troubleshoot production issues and optimize enterprise environments.</li>`],
   [".intelligence-section .eyebrow", "Artificial intelligence in practice"],
   [".intelligence-section h2", 'Connected knowledge.<br /><span class="muted-heading">Work that flows.</span>'],
-  [".intelligence-section .section-description", "Henter designs agents around your processes. The goal is to put company knowledge to practical use, with integrations and workflows defined for each need."],
+  [".intelligence-section .section-description", "Henter designs AI agents and Agentic AI solutions around your processes using technologies such as Agno Agents, LangChain, and RAG. The goal is to put company knowledge to practical use, with integrations and workflows defined for each need."],
   [".intelligence-section .quiet-link", `Design an agent for my business ${ARROW_ICON}`],
   [".agent-flow > .panel-label", "APPLICATION POSSIBILITIES"],
   [".agent-use:nth-of-type(1) h3", "Find what matters."],
@@ -136,16 +136,18 @@ const englishContent = [
 
 const pageMetadata = {
   pt: {
-    title: "Henter Digital Solutions | Tecnologia para ir além",
-    description: "Henter Digital Solutions. Consultoria em software, arquitetura, infraestrutura, otimização e agentes de IA. Liderança técnica com mais de 25 anos de experiência.",
-    ogDescription: "Software, infraestrutura e inteligência artificial. Soluções com visão de negócio e experiência de ponta a ponta.",
+    title: "Consultoria Python, Cloud e IA | Henter Digital Solutions",
+    description: "Consultoria em software, Python, Django, FastAPI, microsserviços, cloud e agentes de IA. Arquitetura e liderança técnica com mais de 25 anos de experiência.",
+    ogDescription: "Consultoria em Python, Django, FastAPI, microsserviços, cloud e agentes de IA, com arquitetura e liderança técnica de ponta a ponta.",
     locale: "pt_BR",
+    imageAlt: "Henter Digital Solutions — From Data to Decisions",
   },
   en: {
-    title: "Henter Digital Solutions | Technology that takes you further",
-    description: "Henter Digital Solutions. Software, architecture, infrastructure, optimization, and AI agent consulting backed by over 25 years of technical leadership.",
-    ogDescription: "Software, infrastructure, and artificial intelligence solutions with business vision and end-to-end experience.",
+    title: "Python, Cloud & AI Consulting | Henter Digital Solutions",
+    description: "Software consulting for Python, Django, FastAPI, microservices, cloud, and AI agents, backed by over 25 years of architecture and technical leadership.",
+    ogDescription: "Python, Django, FastAPI, microservices, cloud, and AI agent consulting with end-to-end architecture and technical leadership.",
     locale: "en_US",
+    imageAlt: "Henter Digital Solutions — From Data to Decisions",
   },
 };
 
@@ -195,11 +197,21 @@ function updateMenuLabel() {
 
 function updateMetadata(language) {
   const metadata = pageMetadata[language];
+  const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+  const localizedUrl = requestedLanguage === "pt" || requestedLanguage === "en"
+    ? `https://henter.com.br/?lang=${language}`
+    : "https://henter.com.br/";
   document.title = metadata.title;
   document.querySelector('meta[name="description"]').content = metadata.description;
   document.querySelector('meta[property="og:title"]').content = metadata.title;
   document.querySelector('meta[property="og:description"]').content = metadata.ogDescription;
   document.querySelector('meta[property="og:locale"]').content = metadata.locale;
+  document.querySelector('meta[property="og:url"]').content = localizedUrl;
+  document.querySelector('meta[property="og:image:alt"]').content = metadata.imageAlt;
+  document.querySelector('meta[name="twitter:title"]').content = metadata.title;
+  document.querySelector('meta[name="twitter:description"]').content = metadata.ogDescription;
+  document.querySelector('meta[name="twitter:image:alt"]').content = metadata.imageAlt;
+  document.querySelector('link[rel="canonical"]').href = localizedUrl;
 }
 
 function updateInterestOptions(language) {
@@ -231,6 +243,12 @@ function applyLanguage(language, updateUrl = false) {
   currentLanguage = language;
   document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
 
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", language);
+    history.replaceState(null, "", url);
+  }
+
   translatedElements.forEach(({ selector, english, portuguese }) => {
     document.querySelectorAll(selector).forEach((element, index) => {
       element.innerHTML = language === "en" ? english : portuguese[index];
@@ -255,11 +273,6 @@ function applyLanguage(language, updateUrl = false) {
   });
   updateMenuLabel();
 
-  if (updateUrl) {
-    const url = new URL(window.location.href);
-    url.searchParams.set("lang", language);
-    history.replaceState(null, "", url);
-  }
 }
 
 function closeMenu() {

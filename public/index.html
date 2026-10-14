@@ -18,8 +18,12 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
     <link rel="canonical" href="https://henter.com.br/" />
     <meta property="og:url" content="https://henter.com.br/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://henter.com.br/?lang=pt" />
+    <link rel="alternate" hreflang="en" href="https://henter.com.br/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://henter.com.br/" />
     <link rel="icon" href="assets/brand/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <title>Henter Digital Solutions | Tecnologia para ir além</title>
@@ -49,6 +53,21 @@
         <symbol id="spark" viewBox="0 0 24 24">
           <path
             d="m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8L12 2Z"
+          />
+        </symbol>
+        <symbol id="python" viewBox="0 0 110 111">
+          <path
+            fill="#3776ab"
+            d="M54.919.001c-4.584.021-8.961.412-12.813 1.094C30.76 3.099 28.7 7.295 28.7 15.032v10.219h26.813v3.406H18.638c-7.793 0-14.616 4.684-16.75 13.594-2.462 10.213-2.571 16.586 0 27.25 1.906 7.938 6.457 13.594 14.25 13.594h9.218v-12.25c0-8.85 7.657-16.656 16.75-16.656h26.781c7.455 0 13.406-6.138 13.406-13.625V15.032c0-7.266-6.13-12.725-13.406-13.937C64.282.328 59.502-.02 54.919.001ZM40.419 8.22c2.77 0 5.031 2.299 5.031 5.125 0 2.816-2.262 5.094-5.031 5.094-2.78 0-5.031-2.278-5.031-5.094 0-2.826 2.252-5.125 5.031-5.125Z"
+          />
+          <path
+            fill="#ffd343"
+            d="M85.638 28.657v11.906c0 9.231-7.826 17-16.75 17H42.106c-7.336 0-13.406 6.279-13.406 13.625V96.72c0 7.266 6.319 11.54 13.406 13.625 8.488 2.495 16.626 2.946 26.782 0 6.75-1.955 13.406-5.888 13.406-13.625V86.501H55.513v-3.406H95.7c7.792 0 10.696-5.436 13.406-13.594 2.8-8.399 2.68-16.476 0-27.25-1.926-7.758-5.604-13.594-13.406-13.594H85.638Zm-15.063 64.656c2.78 0 5.031 2.278 5.031 5.094 0 2.826-2.251 5.125-5.031 5.125-2.77 0-5.031-2.299-5.031-5.125 0-2.816 2.262-5.094 5.031-5.094Z"
+          />
+        </symbol>
+        <symbol id="nextjs" viewBox="0 0 24 24">
+          <path
+            d="M11.573 0c-.177 0-.31.001-.359.007-.051.005-.216.021-.363.033-3.409.307-6.602 2.146-8.624 4.972C1.1 6.584.38 8.367.108 10.255.012 10.914 0 11.109 0 12.002s.012 1.089.108 1.748c.652 4.506 3.859 8.292 8.209 9.694.779.251 1.6.423 2.534.526.363.04 1.935.04 2.299 0 1.612-.179 2.977-.577 4.324-1.264.206-.106.246-.134.218-.158-.019-.014-.899-1.194-1.954-2.62l-1.919-2.592-2.405-3.558c-1.323-1.957-2.412-3.556-2.421-3.556-.009-.003-.019 1.578-.023 3.509-.007 3.38-.01 3.516-.052 3.596-.061.115-.108.162-.206.213-.075.038-.141.045-.495.045h-.406l-.108-.068a.438.438 0 0 1-.157-.172l-.049-.105.005-4.703.007-4.706.073-.091c.037-.05.117-.113.173-.143.096-.047.134-.052.54-.052.478 0 .558.019.682.155.036.037 1.338 1.998 2.895 4.361a10760.4 10760.4 0 0 0 4.735 7.17l1.9 2.878.096-.063c.852-.554 1.752-1.342 2.466-2.163 1.518-1.743 2.496-3.868 2.824-6.134.096-.659.108-.854.108-1.748s-.012-1.088-.108-1.747c-.652-4.506-3.859-8.292-8.209-9.694-.767-.249-1.583-.42-2.498-.523C13.016.019 12.102 0 11.573 0Zm4.068 7.217c.348 0 .409.005.486.047.113.056.204.164.237.277.019.061.023 1.365.019 4.304l-.007 4.218-.744-1.14-.746-1.14v-3.067c0-1.982.01-3.096.023-3.15.038-.131.12-.234.233-.295.096-.05.131-.054.499-.054Z"
           />
         </symbol>
         <symbol id="check" viewBox="0 0 24 24">
@@ -92,6 +111,11 @@
           ><a class="nav-contact" href="#contato"
             >Vamos conversar <svg class="icon"><use href="#arrow" /></svg
           ></a>
+          <div class="language-switch" aria-label="Selecionar idioma">
+            <button type="button" data-language="pt" aria-pressed="true">PT</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-language="en" aria-pressed="false">EN</button>
+          </div>
         </nav>
       </div>
     </header>
@@ -205,6 +229,7 @@
                 stroke-opacity=".15"
               />
               <g class="sculpture-float">
+                <g class="logo-fragment logo-fragment-top">
                 <path
                   d="M187 138 265.2 102.3 265.2 155.2 187 223.1Z"
                   fill="url(#side)"
@@ -228,6 +253,8 @@
                   stroke-opacity=".3"
                   stroke-width="1"
                 />
+                </g>
+                <g class="logo-fragment logo-fragment-middle">
                 <path
                   d="M187 241.5 265.2 173.6 265.2 196.6 187 264.5Z"
                   fill="url(#side)"
@@ -251,6 +278,8 @@
                   stroke-opacity=".3"
                   stroke-width="1"
                 />
+                </g>
+                <g class="logo-core">
                 <path
                   d="M187 289.8 352.6 147.5 352.6 62.4 426.2 28.8 426.2 153 265.2 290.9 265.2 378.3 187 414Z"
                   fill="url(#side)"
@@ -287,6 +316,13 @@
                   stroke-width="1"
                 />
                 <path
+                  class="logo-edge"
+                  pathLength="1"
+                  d="M145 329.8 310.6 187.5 310.6 102.4 384.2 68.8 384.2 193 223.2 330.9 223.2 418.3 145 454Z"
+                />
+                </g>
+                <g class="logo-echo logo-echo-one">
+                <path
                   d="M352.6 234.9 426.2 171.4 426.2 205.9 352.6 269.4Z"
                   fill="url(#side)"
                   opacity=".32"
@@ -313,6 +349,8 @@
                   stroke-width="1"
                   opacity=".32"
                 />
+                </g>
+                <g class="logo-echo logo-echo-two">
                 <path
                   d="M352.6 285.5 426.2 222 426.2 304.8 352.6 338.4Z"
                   fill="url(#side)"
@@ -340,6 +378,7 @@
                   stroke-width="1"
                   opacity=".32"
                 />
+                </g>
               </g>
               <path
                 d="m66 300 38-19m384 16 41-20M251 514v20"
@@ -359,6 +398,18 @@
             <div class="floating-label label-code">
               <svg class="icon"><use href="#code" /></svg
               ><span>Software<br /><strong>Ideias em movimento</strong></span>
+            </div>
+            <div class="floating-label label-nextjs">
+              <svg class="icon nextjs-icon"><use href="#nextjs" /></svg
+              ><span>Frontend<br /><strong>Next.js</strong></span>
+            </div>
+            <div class="floating-label label-microservices">
+              <svg class="icon"><use href="#layers" /></svg
+              ><span>Arquitetura<br /><strong>Microserviços</strong></span>
+            </div>
+            <div class="floating-label label-python">
+              <svg class="icon python-icon"><use href="#python" /></svg
+              ><span>Backend<br /><strong>Python</strong></span>
             </div>
             <div class="floating-label label-ai">
               <svg class="icon"><use href="#spark" /></svg
@@ -421,7 +472,7 @@
               <a
                 class="card-link"
                 href="#contato"
-                data-interest="Desenvolvimento de software"
+                data-interest="software"
                 >Construir uma solução
                 <svg class="icon"><use href="#arrow" /></svg
               ></a>
@@ -446,7 +497,7 @@
               <a
                 class="card-link"
                 href="#contato"
-                data-interest="Infraestrutura, tuning e otimização"
+                data-interest="infrastructure"
                 >Melhorar minha operação
                 <svg class="icon"><use href="#arrow" /></svg
               ></a>
@@ -471,7 +522,7 @@
               <a
                 class="card-link"
                 href="#contato"
-                data-interest="Arquitetura e liderança técnica"
+                data-interest="architecture"
                 >Planejar a evolução
                 <svg class="icon"><use href="#arrow" /></svg
               ></a>
@@ -496,7 +547,7 @@
               <a
                 class="card-link"
                 href="#contato"
-                data-interest="Agentes de IA e automação"
+                data-interest="ai"
                 >Explorar as possibilidades
                 <svg class="icon"><use href="#arrow" /></svg
               ></a>
@@ -581,17 +632,6 @@
                 <span><small>OPERAÇÕES & PERFORMANCE</small>Amdocs / TIM</span
                 ><span>↗</span>
               </button>
-              <button
-                id="tab-consultoria"
-                class="experience-tab"
-                role="tab"
-                aria-selected="false"
-                aria-controls="panel-consultoria"
-                tabindex="-1"
-              >
-                <span><small>CONSULTORIA & GESTÃO</small>Henter Devs</span
-                ><span>↗</span>
-              </button>
             </div>
             <div class="experience-content">
               <article
@@ -613,16 +653,51 @@
                 </p>
                 <ul class="check-list">
                   <li>
-                    <svg class="icon"><use href="#check" /></svg>Busca
-                    inteligente e chatbots com Bedrock, LangChain e RAG.
+                    <svg class="icon"><use href="#check" /></svg>Projetou e
+                    implementou microsserviços escaláveis e orientados a eventos
+                    para plataformas corporativas de monitoramento industrial,
+                    usando backend Python, orquestração baseada em mensagens e
+                    processamento assíncrono para lidar com fluxos de telemetria
+                    de alto volume.
                   </li>
                   <li>
-                    <svg class="icon"><use href="#check" /></svg>Processamento
-                    assíncrono e infraestrutura AWS com EKS.
+                    <svg class="icon"><use href="#check" /></svg>Arquitetou e
+                    desenvolveu APIs REST de alta performance com Django,
+                    integrando pipelines de machine learning e data science.
                   </li>
                   <li>
-                    <svg class="icon"><use href="#check" /></svg>Decisões de
-                    arquitetura, revisão de código e mentoria.
+                    <svg class="icon"><use href="#check" /></svg>Construiu
+                    soluções corporativas de IA com AWS Bedrock, LangChain, RAG
+                    e embeddings vetoriais para recuperação inteligente de
+                    documentos e plataformas de chatbot.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Projetou
+                    soluções backend cloud-native com AWS, Docker, Kubernetes
+                    (EKS), Celery, RabbitMQ, Redis, PostgreSQL e S3.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Desenvolveu
+                    pipelines de processamento de dados em larga escala com
+                    Pandas e otimizou QuerySets customizados do Django para
+                    datasets industriais de alto volume.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Melhorou a
+                    escalabilidade, a confiabilidade e a performance da
+                    plataforma por meio de arquitetura distribuída,
+                    processamento assíncrono e otimização de infraestrutura.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Liderou
+                    discussões técnicas, decisões de arquitetura, revisões de
+                    código e iniciativas de mentoria para equipes distribuídas
+                    de engenharia.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Colaborou com
+                    equipes multidisciplinares de Data Science, Produto e
+                    Frontend para entregar soluções corporativas escaláveis.
                   </li>
                 </ul>
                 <div class="panel-footer">
@@ -649,16 +724,43 @@
                 </p>
                 <ul class="check-list">
                   <li>
-                    <svg class="icon"><use href="#check" /></svg>Backend e APIs
-                    desenvolvidos com Django.
+                    <svg class="icon"><use href="#check" /></svg>Liderou a
+                    arquitetura backend e o desenvolvimento de uma plataforma
+                    SaaS de procurement que conecta gestores de propriedades a
+                    prestadores de serviços.
                   </li>
                   <li>
-                    <svg class="icon"><use href="#check" /></svg>Microsserviços
-                    e processamento orientado a eventos.
+                    <svg class="icon"><use href="#check" /></svg>Projetou e
+                    implementou um marketplace no qual fornecedores competiam
+                    por meio de leilões reversos e cotações diretas para serviços
+                    como segurança, limpeza, elétrica e manutenção.
                   </li>
                   <li>
-                    <svg class="icon"><use href="#check" /></svg>Liderança e
-                    mentoria de uma equipe React na Índia.
+                    <svg class="icon"><use href="#check" /></svg>Construiu a
+                    plataforma em Django com arquitetura de microsserviços e
+                    processamento assíncrono orientado a eventos para desacoplar
+                    serviços, melhorar o isolamento de falhas e escalar fluxos
+                    de negócio sob cargas variáveis de procurement.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Projetou e
+                    implementou APIs REST seguras e serviços backend desde o
+                    início, entregando uma arquitetura sustentável e preparada
+                    para cloud.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Gerenciou e
+                    orientou uma equipe frontend React distribuída na Índia,
+                    colaborando também na entrega da plataforma backend.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Implementou
+                    integrações com diversos meios de pagamento.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Integrou a
+                    plataforma a diversos sistemas CRM utilizados por corretoras
+                    de imóveis.
                   </li>
                 </ul>
                 <div class="panel-footer">
@@ -684,6 +786,17 @@
                   e B2W.
                 </p>
                 <ul class="check-list">
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Desenvolveu
+                    integrações escaláveis com Amazon, CNOVA, B2W e outros
+                    marketplaces, permitindo que vendedores publicassem
+                    produtos automaticamente em vários canais de venda a partir
+                    de uma única plataforma.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Criou um
+                    gerador de Nota Fiscal Eletrônica integrado à SEFAZ.
+                  </li>
                   <li>
                     <svg class="icon"><use href="#check" /></svg>Sincronização
                     de produtos, estoque, preços e pedidos.
@@ -731,47 +844,21 @@
                     <svg class="icon"><use href="#check" /></svg>Automação,
                     monitoramento e diagnóstico em produção.
                   </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Desenvolveu
+                    scripts de automação e ferramentas de monitoramento para
+                    otimizar as operações de infraestrutura e reduzir o esforço
+                    manual.
+                  </li>
+                  <li>
+                    <svg class="icon"><use href="#check" /></svg>Colaborou com
+                    equipes de desenvolvimento e operações para diagnosticar
+                    problemas em produção e otimizar ambientes corporativos.
+                  </li>
                 </ul>
                 <div class="panel-footer">
                   <span>Senior Infrastructure Analyst / DevOps</span
                   ><span>2012 — 2013</span>
-                </div>
-              </article>
-              <article
-                id="panel-consultoria"
-                class="experience-panel"
-                role="tabpanel"
-                aria-labelledby="tab-consultoria"
-                tabindex="0"
-                hidden
-              >
-                <span class="panel-label"
-                  >CONSULTORIA · SETOR PÚBLICO · ENTREGA</span
-                >
-                <h3>Experiência também<br />do lado do negócio.</h3>
-                <p>
-                  Fundação e liderança da Henter Devs, com projetos de
-                  tecnologia para organizações privadas e órgãos municipais. Uma
-                  trajetória que soma execução técnica e responsabilidade pela
-                  entrega.
-                </p>
-                <ul class="check-list">
-                  <li>
-                    <svg class="icon"><use href="#check" /></svg>Desenvolvimento
-                    de sistemas e modernização de infraestrutura.
-                  </li>
-                  <li>
-                    <svg class="icon"><use href="#check" /></svg>Planejamento
-                    técnico e arquitetura de soluções sob medida.
-                  </li>
-                  <li>
-                    <svg class="icon"><use href="#check" /></svg>Relacionamento
-                    com clientes e condução de projetos.
-                  </li>
-                </ul>
-                <div class="panel-footer">
-                  <span>Fundador / Consultor e Desenvolvedor</span
-                  ><span>2013 — 2016</span>
                 </div>
               </article>
             </div>
@@ -795,7 +882,7 @@
             <a
               class="quiet-link"
               href="#contato"
-              data-interest="Agentes de IA e automação"
+              data-interest="ai"
               >Desenhar um agente para meu negócio
               <svg class="icon"><use href="#arrow" /></svg
             ></a>
@@ -854,23 +941,24 @@
           <div class="products-grid">
             <article class="product-card">
               <div class="product-visual visual-canhoto" aria-hidden="true">
-                <span class="visual-caption">IDENTIDADE CONCEITUAL</span>
-                <div class="receipt">
-                  <span class="receipt-brand">cs<span>·</span></span
-                  ><span class="receipt-line"></span
-                  ><span class="receipt-line short"></span
-                  ><span class="receipt-check">✓</span
-                  ><span class="receipt-line"></span>
-                </div>
-                <div class="receipt-behind"></div>
+                <img
+                  class="canhoto-preview"
+                  src="assets/products/canhoto-simples.webp"
+                  alt=""
+                  width="900"
+                  height="549"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="visual-caption">PRÉVIA DO PRODUTO</span>
                 <span class="visual-number">01</span>
               </div>
               <div class="product-body">
                 <span class="product-status"><i></i> Em finalização</span>
                 <h3>Canhoto Simples</h3>
                 <p>
-                  O próximo produto da Henter está na reta final. Em breve, a
-                  apresentação completa da solução e os detalhes de lançamento.
+                  Plataforma para gerenciar entregas e registrar fotos,
+                  assinatura e localização em um único fluxo.
                 </p>
                 <a
                   class="card-link"
@@ -910,23 +998,32 @@
             </article>
             <article class="product-card">
               <div class="product-visual visual-cotacao" aria-hidden="true">
-                <span class="visual-caption">IDENTIDADE CONCEITUAL</span>
-                <div class="quote-bars"><i></i><i></i><i></i></div>
-                <span class="quote-arrow">↗</span
-                ><span class="visual-number">03</span>
+                <img
+                  class="cotacao-preview"
+                  src="assets/products/cota-simples.webp"
+                  alt=""
+                  width="1200"
+                  height="637"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span class="cotacao-brand"><strong>CS</strong> Cota Simples</span>
+                <span class="visual-caption">TELA DO PRODUTO</span>
+                <span class="visual-number">03</span>
               </div>
               <div class="product-body">
                 <span class="product-status teal"
                   ><i></i> Nova versão planejada</span
                 >
-                <h3>Sistema de Cotação</h3>
+                <h3>Cota Simples</h3>
                 <p>
-                  Uma base já pronta em Django + AdminLTE. O próximo passo é uma
-                  versão com apresentação e experiência mais profissionais.
+                  Sistema de cotações para estabelecimentos. O estabelecimento
+                  lança uma cotação, os fornecedores informam seus preços e o
+                  sistema define o vencedor com base em diferentes critérios.
                 </p>
                 <a
                   class="card-link"
-                  href="https://wa.me/5524992755167?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Sistema%20de%20Cota%C3%A7%C3%A3o."
+                  href="https://wa.me/5524992755167?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20o%20Cota%20Simples."
                   target="_blank"
                   rel="noopener noreferrer"
                   >Conhecer a evolução
@@ -1098,12 +1195,12 @@
             <form class="contact-form" id="contact-form">
               <label for="interest">Como a Henter pode ajudar?</label
               ><select id="interest" name="interest">
-                <option>Desenvolvimento de software</option>
-                <option>Infraestrutura, tuning e otimização</option>
-                <option>Arquitetura e liderança técnica</option>
-                <option>Agentes de IA e automação</option>
-                <option>Produtos Henter</option>
-                <option>Quero entender as possibilidades</option></select
+                <option value="software">Desenvolvimento de software</option>
+                <option value="infrastructure">Infraestrutura, tuning e otimização</option>
+                <option value="architecture">Arquitetura e liderança técnica</option>
+                <option value="ai">Agentes de IA e automação</option>
+                <option value="products">Produtos Henter</option>
+                <option value="discovery">Quero entender as possibilidades</option></select
               ><label for="message">Conte um pouco sobre o seu projeto</label
               ><textarea
                 id="message"

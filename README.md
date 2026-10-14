@@ -2,7 +2,7 @@
 
 Site institucional da **Henter Digital Solutions**, preparado para o domínio **https://henter.com.br/**.
 
-Apresenta consultoria em desenvolvimento de software, infraestrutura, arquitetura, otimização e agentes de IA, além dos produtos Canhoto Simples, Pré-Matrícula e Sistema de Cotação.
+Apresenta consultoria em desenvolvimento de software, infraestrutura, arquitetura, otimização e agentes de IA, além dos produtos Canhoto Simples, Pré-Matrícula e Cota Simples.
 
 O projeto usa HTML, CSS e JavaScript. Os arquivos em `public/` são a versão pronta para publicação: não há instalação de dependências, compilação ou servidor de aplicação.
 
@@ -17,11 +17,12 @@ site-henter/
     ├── index.html           # Conteúdo, navegação e metadados do site
     ├── 404.html             # Página para endereços inexistentes
     ├── styles.css           # Estilos e layout responsivo
-    ├── script.js            # Menu, abas e preparação da mensagem de WhatsApp
+    ├── script.js            # Idiomas, menu, abas e preparação da mensagem de WhatsApp
     ├── robots.txt
     ├── sitemap.xml
     └── assets/
         ├── brand/           # Logos SVG, símbolos e favicon
+        ├── products/        # Imagens otimizadas dos produtos
         └── fonts/           # Manrope e sua licença OFL
 ```
 
@@ -41,13 +42,21 @@ Abra **http://127.0.0.1:8000/** no navegador. Use `Ctrl+C` para encerrar o servi
 
 Depois de editar os arquivos, recarregue a página. Para uma revisão rápida, também é possível abrir `public/index.html` diretamente no navegador.
 
+## Idiomas
+
+O site oferece português e inglês pelo seletor `PT / EN` no cabeçalho. Ao abrir o endereço sem um parâmetro de idioma, a configuração principal do navegador define a versão inicial: navegadores em português usam `PT` e os demais usam `EN`.
+
+A versão em inglês pode ser compartilhada diretamente em plataformas internacionais por meio de **https://henter.com.br/?lang=en**. Para abrir diretamente em português, use **https://henter.com.br/?lang=pt**.
+
+Os textos em português permanecem em `public/index.html`. As traduções em inglês, os metadados traduzidos e as mensagens do WhatsApp ficam em `public/script.js`.
+
 ## Manutenção
 
 | Alteração                                                       | Arquivo ou diretório                                            |
 | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | Textos, serviços, experiência, produtos e contatos              | `public/index.html`                                             |
 | Cores, espaçamento, tipografia e comportamento em telas menores | `public/styles.css`                                             |
-| Menu móvel, abas de experiência e formulário de contato         | `public/script.js`                                              |
+| Idiomas, menu móvel, abas e formulário de contato               | `public/script.js`                                              |
 | Logos, símbolos e favicon                                       | `public/assets/brand/`                                          |
 | Fontes e licença                                                | `public/assets/fonts/`                                          |
 | Página não encontrada                                           | `public/404.html`                                               |
